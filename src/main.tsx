@@ -10,6 +10,7 @@ import Polls from "./routes/Polls.tsx";
 import Finances from "./routes/Finances.tsx";
 import PostPage from "./routes/PostPage.tsx";
 import Login from "./routes/Login.tsx";
+import Register from "./routes/Register.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -26,7 +27,7 @@ createRoot(document.getElementById("root")!).render(
 
         <Route>
           <Route path="login" element={<Login />} />
-          <Route path="register" />
+          <Route path="register" element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>
