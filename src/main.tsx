@@ -8,6 +8,7 @@ import Sports from "./routes/Sports.tsx";
 import Events from "./routes/Events.tsx";
 import Polls from "./routes/Polls.tsx";
 import Finances from "./routes/Finances.tsx";
+import PostPage from "./routes/PostPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -20,7 +21,7 @@ createRoot(document.getElementById("root")!).render(
           <Route path="financas" element={<Finances /> } />
           <Route path="esportes" element={<Sports />} />
           <Route path="eventos" element={<Events /> }/>
-          <Route path=":postId" />
+          <Route path=":postId" element={<PostPage />} />
         </Route>
 
         <Route>

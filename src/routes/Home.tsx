@@ -1,18 +1,7 @@
 import { useState } from "react";
 import Tabs from "../components/common/Tabs";
 import Post from "../components/common/Post/Post";
-
-export type PostInfo = {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  category: string;
-  votes: number;
-  comments: number;
-  timestamp: string;
-  isPinned?: boolean;
-};
+import type { PostInfo } from "../types/PostInfo";
 
 const ForumTheBug = () => {
   const [activeTab, setActiveTab] = useState("inicio");
