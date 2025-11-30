@@ -11,6 +11,7 @@ import Finances from "./routes/Finances.tsx";
 import PostPage from "./routes/PostPage.tsx";
 import Login from "./routes/Login.tsx";
 import Register from "./routes/Register.tsx";
+import CreatePoll from "./routes/CreatePoll.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")!).render(
         <Route element={<FeedLayout />}>
           <Route index element={<Home />} />
           <Route path="enquetes" element={<Polls />} />
+          <Route path="enquetes/criar" element={<CreatePoll />} />
           <Route path="financas" element={<Finances />} />
           <Route path="esportes" element={<Sports />} />
           <Route path="eventos" element={<Events />} />
