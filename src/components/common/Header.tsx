@@ -12,7 +12,7 @@ export default function Header({ heading, subheading }: HeaderProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <img
-              src="/logo_round.png"
+              src="/src/assets/logo_round.png"
               alt="Logo The Bug"
               className="w-12 h-12 rounded-full object-cover border-2 border-white"
             />
