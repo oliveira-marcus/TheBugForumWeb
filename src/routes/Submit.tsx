@@ -17,7 +17,7 @@ export default function Submit() {
   const mapCategory = (c?: string) => {
     if (!c) return ("General" as any);
     const key = c.toLowerCase();
-    if (key.includes("event")) return ("Eventes" as any);
+    if (key.includes("event")) return ("Events" as any);
     if (key.includes("finance")) return ("Finances" as any);
     if (key.includes("sport")) return ("Sports" as any);
     return ("General" as any);

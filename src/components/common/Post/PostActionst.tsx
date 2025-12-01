@@ -66,7 +66,7 @@ export default function PostActions({
         <button
           onClick={handleUpvote}
           disabled={isLoading}
-          className={`p-1 transition ${
+          className={`p-1 transition cursor-pointer ${
             userVote === "upvote" ? "text-blue-500" : "text-gray-400 hover:text-blue-500"
           } disabled:opacity-50`}
           title="Upvote"
@@ -77,7 +77,7 @@ export default function PostActions({
         <button
           onClick={handleDownvote}
           disabled={isLoading}
-          className={`p-1 transition ${
+          className={`p-1 transition cursor-pointer ${
             userVote === "downvote" ? "text-red-500" : "text-gray-400 hover:text-red-500"
           } disabled:opacity-50 rotate-180`}
           title="Downvote"
@@ -86,7 +86,7 @@ export default function PostActions({
         </button>
       </div>
 
-      <button className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white transition">
+      <button className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-400 hover:text-white transition">
         <MessageSquare className="w-4 h-4" />
         <span className="text-sm font-medium">{commentsCount} comentários</span>
       </button>

@@ -16,19 +16,19 @@ export default function CategorySelect({
   const options = [
     {
       value: "General",
-      label: "General",
+      label: "Geral",
     },
     {
       value: "Events",
-      label: "Events",
+      label: "Eventos",
     },
     {
       value: "Finances",
-      label: "Finances",
+      label: "Finanças",
     },
     {
       value: "Sports",
-      label: "Sports",
+      label: "Esportes",
     },
   ];
 

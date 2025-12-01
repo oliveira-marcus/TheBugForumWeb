@@ -1,11 +1,4 @@
-import {
-  Award,
-  Calendar,
-  DollarSign,
-  Home,
-  Plus,
-  Vote,
-} from "lucide-react";
+import { Award, Calendar, DollarSign, Home, Plus, Vote } from "lucide-react";
 import { Link } from "react-router";
 
 export default function Sidebar() {
@@ -22,10 +15,14 @@ export default function Sidebar() {
   return (
     <aside className="lg:col-span-3 space-y-4">
       <div className="bg-gray-900 rounded-lg border border-gray-800 p-4">
-        <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition">
+        <Link
+          to="/posts/criar"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 
+                     rounded-lg flex items-center justify-center gap-2 transition"
+        >
           <Plus className="w-5 h-5" />
           Nova Discussão
-        </button>
+        </Link>
       </div>
 
       <div className="bg-gray-900 rounded-lg border border-gray-800 overflow-hidden">
