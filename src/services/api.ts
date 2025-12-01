@@ -5,7 +5,6 @@ const api = axios.create({
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
-    "User-Agent": "insomnia/9.3.2",
   },
   timeout: 30 * 1000,
 });

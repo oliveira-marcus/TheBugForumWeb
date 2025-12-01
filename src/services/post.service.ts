@@ -7,8 +7,9 @@ export const postService = {
     return response.data;
   },
 
-  getAllPosts: async (page: number = 1, limit: number = 20, type?: string): Promise<PostsResponse> => {
+  getAllPosts: async (page: number = 1, limit: number = 20, category?: string, type?: string): Promise<PostsResponse> => {
     const params: any = { page, limit };
+    if (category) params.category = category;
     if (type) params.type = type;
     const response = await api.get('/posts', { params });
     return response.data;

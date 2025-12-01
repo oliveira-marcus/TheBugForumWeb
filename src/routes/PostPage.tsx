@@ -3,6 +3,7 @@ import Comment from "../components/common/Comment/Comment";
 import PostActions from "../components/common/Post/PostActionst";
 import PostMeta from "../components/common/Post/PostMeta";
 import ReplyPostInput from "../components/common/Post/ReplyPostInput";
+import Poll from "../components/common/Enquete/Poll";
 import type { CommentInfo } from "../types/comment.types";
 import { formatTimeStamp } from "../utils/datetime";
 import type { PostInfo } from "../types/post.types";
@@ -15,6 +16,8 @@ export default function PostPage() {
   const [comments, setComments] = useState<CommentInfo[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const [postVotes, setPostVotes] = useState({ upvotes: 0, downvotes: 0 });
 
   const { postId } = useParams<{ postId: string }>();
 
@@ -35,6 +38,7 @@ export default function PostPage() {
         ]);
 
         setPost(postData ?? null);
+        if (postData) setPostVotes({ upvotes: postData.upvotes, downvotes: postData.downvotes });
         setComments(commentsData ?? []);
       } catch (err) {
         setError("Erro ao carregar o post.");
@@ -72,9 +76,16 @@ export default function PostPage() {
       <p className="text-gray-300">{post.content}</p>
 
       <PostActions
+        postId={post.id}
         commentsCount={comments.length}
-        votes={post.upvotes - post.downvotes}
+        votes={postVotes.upvotes - postVotes.downvotes}
+        onVoteSuccess={(newUpvotes, newDownvotes) => {
+          setPostVotes({ upvotes: newUpvotes, downvotes: newDownvotes });
+          setPost((p) => (p ? { ...p, upvotes: newUpvotes, downvotes: newDownvotes } : p));
+        }}
       />
+
+      {post.poll && <Poll enquete={post.poll} />}
 
       <ReplyPostInput postId={parseInt(postId!)} setComments={setComments} />
 

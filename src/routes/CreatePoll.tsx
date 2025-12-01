@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Plus, ArrowLeft } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { pollService } from "../services/poll.service";
+
+import type { CreatePollData } from "../types/poll.types";
 
 export default function CreatePoll() {
   const [formData, setFormData] = useState({
@@ -47,7 +50,7 @@ export default function CreatePoll() {
       !newErrors.options &&
       !newErrors.general
     ) {
-      console.log("Enquete criada:", formData);
+      createPoll();
     }
   };
 
@@ -86,6 +89,36 @@ export default function CreatePoll() {
       }));
     }
   };
+
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function createPoll() {
+    const validOptions = formData.options.map((o) => o.trim()).filter((o) => o !== "");
+
+    const data: CreatePollData = {
+      title: formData.title.trim(),
+      content: formData.content.trim() || undefined,
+      category: ("Polls" as any),
+      options: validOptions,
+    };
+
+    try {
+      setIsLoading(true);
+      const created = await pollService.createPoll(data);
+      // If backend created a post for the poll, navigate to that post.
+      if (created.postId) {
+        navigate(`/${created.postId}`);
+      } else {
+        navigate("/enquetes");
+      }
+    } catch (error: any) {
+      console.error("Erro ao criar enquete:", error);
+      setErrors((prev) => ({ ...prev, general: error?.message || "Erro ao criar enquete" }));
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <main className="lg:col-span-9">
@@ -203,9 +236,10 @@ export default function CreatePoll() {
             </Link>
             <button
               type="submit"
-              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition"
+              disabled={isLoading}
+              className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition disabled:opacity-50"
             >
-              Criar Enquete
+              {isLoading ? "Criando..." : "Criar Enquete"}
             </button>
           </div>
         </form>

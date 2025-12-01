@@ -7,7 +7,7 @@ export interface PollOption {
   votes?: any[];
 }
 
-export interface Poll {
+export interface PollInfo {
   id: number;
   postId: number;
   multipleChoice: boolean;

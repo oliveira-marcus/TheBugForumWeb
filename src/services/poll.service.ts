@@ -1,18 +1,18 @@
-import type { CreatePollData, Poll, PollOption, PollResults, UpdatePollData } from '../types/poll.types';
+import type { CreatePollData, PollInfo, PollOption, PollResults, UpdatePollData } from '../types/poll.types';
 import api from './api';
 
 export const pollService = {
-  createPoll: async (data: CreatePollData): Promise<Poll> => {
+  createPoll: async (data: CreatePollData): Promise<PollInfo> => {
     const response = await api.post('/polls', data);
     return response.data;
   },
 
-  getPollById: async (id: number): Promise<Poll> => {
+  getPollById: async (id: number): Promise<PollInfo> => {
     const response = await api.get(`/polls/${id}`);
     return response.data;
   },
 
-  updatePoll: async (id: number, data: UpdatePollData): Promise<Poll> => {
+  updatePoll: async (id: number, data: UpdatePollData): Promise<PollInfo> => {
     const response = await api.put(`/polls/${id}`, data);
     return response.data;
   },

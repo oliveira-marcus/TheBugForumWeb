@@ -1,9 +1,9 @@
 export const Category = {
-  GENERAL: 'GENERAL',
-  EVENTS: 'EVENTS',
-  FINANCES: 'FINANCES',
-  SPORTS: 'SPORTS',
-  POLLS: 'POLLS',
+  GENERAL: 'General',
+  EVENTS: 'Events',
+  FINANCES: 'Finances',
+  SPORTS: 'Sports',
+  POLLS: 'Polls',
 } as const;
 
 export interface PostInfo {
