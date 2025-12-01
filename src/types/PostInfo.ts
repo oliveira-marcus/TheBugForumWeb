@@ -3,7 +3,7 @@ export interface PostInfo {
   userId: number;
   title: string;
   content: string;
-  type: string;
+  category: string;
   upvotes: number;
   downvotes: number;
   createdAt: string;

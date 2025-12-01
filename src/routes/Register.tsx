@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff, UserPlus, User, Mail, Lock } from "lucide-react";
+import { Link, useNavigate } from "react-router";
+import { register } from "../services/auth";
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +22,9 @@ export default function Register() {
     general: "",
   });
 
-  const handleSubmit = () => {
+  let navigate = useNavigate();
+
+  const handleSubmit = async () => {
     const newErrors = { password: "", confirmPassword: "", general: "" };
 
     if (formData.password.length < 6) {
@@ -42,10 +46,13 @@ export default function Register() {
       !newErrors.confirmPassword &&
       !newErrors.general
     ) {
-      console.log("Cadastro realizado:", formData);
-      alert(
-        `Cadastro realizado com sucesso!\nBem-vindo(a), ${formData.firstName}!`
-      );
+      try {
+        await register(formData);
+        navigate("/login");
+      }
+      catch (error: any) {
+      console.log(error);
+    }
     }
   };
 
@@ -329,12 +336,12 @@ export default function Register() {
           <div className="text-center">
             <p className="text-gray-400">
               Já tem uma conta?{" "}
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 className="text-blue-400 hover:text-blue-300 font-semibold transition"
               >
                 Faça login
-              </a>
+              </Link>
             </p>
           </div>
         </div>

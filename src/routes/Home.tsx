@@ -13,7 +13,7 @@ const ForumTheBug = () => {
     title: "Prestação de Contas - Novembro 2025",
     content:
       "Relatório financeiro completo do mês de novembro com detalhamento de receitas e despesas...",
-    type: "financas",
+    category: "financas",
     upvotes: 45,
     downvotes: 0,
     createdAt: new Date().toISOString(),
@@ -36,7 +36,7 @@ const ForumTheBug = () => {
     title: "Proposta: Novo uniforme para o InterBugs 2026",
     content:
       "Gostaria de propor uma discussão sobre o design do próximo uniforme da atlética...",
-    type: "propostas",
+    category: "propostas",
     upvotes: 32,
     downvotes: 0,
     createdAt: new Date().toISOString(),
@@ -59,7 +59,7 @@ const ForumTheBug = () => {
     title: "MatchWeek confirmado para Dezembro!",
     content:
       "Pessoal, saiu a confirmação! O MatchWeek acontecerá nos dias 15 e 16 de dezembro...",
-    type: "eventos",
+    category: "eventos",
     upvotes: 78,
     downvotes: 0,
     createdAt: new Date().toISOString(),
@@ -82,7 +82,7 @@ const ForumTheBug = () => {
     title: "Enquete: Horário dos treinos de futsal",
     content:
       "Precisamos definir o melhor horário para os treinos. Votem nas opções abaixo!",
-    type: "esportes",
+    category: "esportes",
     upvotes: 23,
     downvotes: 0,
     createdAt: new Date().toISOString(),

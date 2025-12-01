@@ -1,4 +1,6 @@
-import { Search, Bell, Menu } from "lucide-react";
+import { Search, Menu, LogOut } from "lucide-react";
+import { useAuth } from "../../contexts/AuthContext";
+import { useNavigate } from "react-router";
 
 interface HeaderProps {
   heading: string;
@@ -6,6 +8,14 @@ interface HeaderProps {
 }
 
 export default function Header({ heading, subheading }: HeaderProps) {
+  const { signOut } = useAuth();
+  let navigate = useNavigate();
+
+  function handleSignOut() {
+    signOut();
+    navigate("/");
+  }
+
   return (
     <header className="bg-linear-to-r from-blue-600 to-blue-800 border-b border-blue-700 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-3">
@@ -31,8 +41,11 @@ export default function Header({ heading, subheading }: HeaderProps) {
                 className="bg-transparent border-none outline-none text-white placeholder-blue-300 w-full"
               />
             </div>
-            <button className="p-2 hover:bg-blue-700 rounded-lg transition">
-              <Bell className="w-6 h-6" />
+            <button
+              className="p-2 hover:bg-blue-700 rounded-lg transition cursor-pointer"
+              onClick={handleSignOut}
+            >
+              <LogOut className="w-6 h-6" />
             </button>
             <button className="p-2 hover:bg-blue-700 rounded-lg transition md:hidden">
               <Menu className="w-6 h-6" />

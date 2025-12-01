@@ -1,18 +1,30 @@
 import { useState } from "react";
 import { Eye, EyeOff, LogIn } from "lucide-react";
+import { useAuth } from "../contexts/AuthContext";
+import { login } from "../services/auth";
+import { Link, useNavigate } from "react-router";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: "",
+    username: "",
     password: "",
-    rememberMe: false,
   });
+  let navigate = useNavigate();
+  const { signIn } = useAuth();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login attempt:", formData);
-    // Autenticação
+    
+    try {
+      const response = await login(formData);
+      signIn(response.token);
+      navigate("/");
+    }
+    catch (error: any) {
+      console.log(error);
+    }
+    
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,18 +56,18 @@ export default function Login() {
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label
-                htmlFor="email"
+                htmlFor="username"
                 className="block text-sm font-medium text-gray-300 mb-2"
               >
-                Email
+                Username
               </label>
               <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
                 onChange={handleChange}
-                placeholder="seu.email@exemplo.com"
+                placeholder="usuario-1"
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
                 required
               />
@@ -94,16 +106,6 @@ export default function Login() {
             </div>
 
             <div className="flex items-center justify-between">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="rememberMe"
-                  checked={formData.rememberMe}
-                  onChange={handleChange}
-                  className="w-4 h-4 rounded border-gray-700 bg-gray-800 text-blue-600 focus:ring-2 focus:ring-blue-500 cursor-pointer"
-                />
-                <span className="text-sm text-gray-300">Lembrar-me</span>
-              </label>
               <a
                 href="#"
                 className="text-sm text-blue-400 hover:text-blue-300 transition"
@@ -133,12 +135,12 @@ export default function Login() {
           <div className="text-center">
             <p className="text-gray-400">
               Não tem uma conta?{" "}
-              <a
-                href="/register"
+              <Link
+                to="/register"
                 className="text-blue-400 hover:text-blue-300 font-semibold transition"
               >
                 Cadastre-se
-              </a>
+              </Link>
             </p>
           </div>
         </div>

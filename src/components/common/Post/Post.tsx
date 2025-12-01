@@ -2,6 +2,7 @@ import { Award, ChevronUp } from "lucide-react";
 import type { PostInfo } from "../../../types/PostInfo";
 import PostMeta from "./PostMeta";
 import PostActions from "./PostActionst";
+import { formatTimeStamp } from "../../../utils/datetime";
 
 interface PostProps {
   post: PostInfo;
@@ -30,7 +31,7 @@ export default function Post({ post }: PostProps) {
           <PostMeta
             category={"Geral"}
             author={post.user.username}
-            timestamp={post.createdAt}
+            timestamp={formatTimeStamp(new Date(post.createdAt))}
           />
 
           <h2 className="text-xl font-bold mb-2 hover:text-blue-400 cursor-pointer">
