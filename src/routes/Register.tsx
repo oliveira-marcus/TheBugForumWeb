@@ -41,6 +41,7 @@ export default function Register() {
 
     setErrors(newErrors);
 
+    // Se não houver erros, prosseguir
     if (
       !newErrors.password &&
       !newErrors.confirmPassword &&
@@ -63,6 +64,7 @@ export default function Register() {
       [name]: type === "checkbox" ? checked : value,
     }));
 
+    // Limpar erros quando o usuário começar a digitar
     if (errors[name as keyof typeof errors]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -77,6 +79,7 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center justify-center p-4 py-12">
       <div className="w-full max-w-2xl">
+        {/* Logo e Título */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-4">
             <img
@@ -96,6 +99,7 @@ export default function Register() {
           </p>
         </div>
 
+        {/* Card de Cadastro */}
         <div className="bg-gray-900 rounded-2xl border border-gray-800 p-8 shadow-2xl">
           <h2 className="text-2xl font-bold text-white mb-6">Criar Conta</h2>
 
@@ -106,6 +110,7 @@ export default function Register() {
           )}
 
           <div className="space-y-5">
+            {/* Nome e Sobrenome - Grid 2 colunas */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label
@@ -154,6 +159,7 @@ export default function Register() {
               </div>
             </div>
 
+            {/* Username */}
             <div>
               <label
                 htmlFor="username"
@@ -182,6 +188,7 @@ export default function Register() {
               </p>
             </div>
 
+            {/* Email */}
             <div>
               <label
                 htmlFor="email"
@@ -205,6 +212,7 @@ export default function Register() {
               </div>
             </div>
 
+            {/* Senha */}
             <div>
               <label
                 htmlFor="password"
@@ -244,6 +252,7 @@ export default function Register() {
               )}
             </div>
 
+            {/* Confirmar Senha */}
             <div>
               <label
                 htmlFor="confirmPassword"
@@ -287,6 +296,7 @@ export default function Register() {
               )}
             </div>
 
+            {/* Termos de Uso */}
             <div>
               <label className="flex items-start gap-3 cursor-pointer group">
                 <input
@@ -315,6 +325,7 @@ export default function Register() {
               </label>
             </div>
 
+            {/* Botão de Cadastro */}
             <button
               onClick={handleSubmit}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition shadow-lg hover:shadow-blue-500/50"
@@ -324,6 +335,7 @@ export default function Register() {
             </button>
           </div>
 
+          {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-800"></div>
@@ -333,6 +345,7 @@ export default function Register() {
             </div>
           </div>
 
+          {/* Link para Login */}
           <div className="text-center">
             <p className="text-gray-400">
               Já tem uma conta?{" "}
@@ -346,6 +359,7 @@ export default function Register() {
           </div>
         </div>
 
+        {/* Footer */}
         <p className="text-center text-gray-500 text-sm mt-6">
           © 2025 Atlética The Bug - UFVJM
         </p>

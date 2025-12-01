@@ -38,6 +38,7 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
+        {/* Logo e Título */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-4">
             <img
@@ -50,10 +51,12 @@ export default function Login() {
           <p className="text-blue-300">Atlética UFVJM - SI</p>
         </div>
 
+        {/* Card de Login */}
         <div className="bg-gray-900 rounded-2xl border border-gray-800 p-8 shadow-2xl">
           <h2 className="text-2xl font-bold text-white mb-6">Entrar</h2>
 
           <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Email */}
             <div>
               <label
                 htmlFor="username"
@@ -73,6 +76,7 @@ export default function Login() {
               />
             </div>
 
+            {/* Senha */}
             <div>
               <label
                 htmlFor="password"
@@ -105,6 +109,7 @@ export default function Login() {
               </div>
             </div>
 
+            {/* Lembrar-me e Esqueci a senha */}
             <div className="flex items-center justify-between">
               <a
                 href="#"
@@ -114,6 +119,7 @@ export default function Login() {
               </a>
             </div>
 
+            {/* Botão de Login */}
             <button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-2 transition shadow-lg hover:shadow-blue-500/50"
@@ -123,6 +129,7 @@ export default function Login() {
             </button>
           </form>
 
+          {/* Divider */}
           <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-800"></div>
@@ -132,6 +139,7 @@ export default function Login() {
             </div>
           </div>
 
+          {/* Link para Cadastro */}
           <div className="text-center">
             <p className="text-gray-400">
               Não tem uma conta?{" "}
@@ -145,6 +153,7 @@ export default function Login() {
           </div>
         </div>
 
+        {/* Footer */}
         <p className="text-center text-gray-500 text-sm mt-6">
           © 2025 Atlética The Bug - UFVJM
         </p>
