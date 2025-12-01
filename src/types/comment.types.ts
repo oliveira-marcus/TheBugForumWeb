@@ -22,7 +22,6 @@ export interface CommentInfo {
 }
 
 export interface CreateCommentData {
-  postId: number;
   content: string;
   parentCommentId?: number;
 }

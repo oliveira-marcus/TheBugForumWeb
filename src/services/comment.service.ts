@@ -1,24 +1,24 @@
-import type { CreateCommentData } from '../types/comment.types';
+import type { CommentInfo, CreateCommentData } from '../types/comment.types';
 import api from './api';
 
 export const commentService = {
-  createComment: async (data: CreateCommentData): Promise<Comment> => {
-    const response = await api.post('/comments', data);
+  createComment: async (postId: number, data: CreateCommentData): Promise<CommentInfo> => {
+    const response = await api.post(`/posts/${postId }/comments`, data);
     return response.data;
   },
 
-  getPostComments: async (postId: number, depth?: number): Promise<Comment[]> => {
+  getPostComments: async (postId: number, depth?: number): Promise<CommentInfo[]> => {
     const params = depth !== undefined ? { depth } : {};
-    const response = await api.get(`/comments/post/${postId}`, { params });
+    const response = await api.get(`/posts/${postId}/comments`, { params });
     return response.data;
   },
 
-  getCommentById: async (id: number): Promise<Comment> => {
+  getCommentById: async (id: number): Promise<CommentInfo> => {
     const response = await api.get(`/comments/${id}`);
     return response.data;
   },
 
-  updateComment: async (id: number, content: string): Promise<Comment> => {
+  updateComment: async (id: number, content: string): Promise<CommentInfo> => {
     const response = await api.put(`/comments/${id}`, { content });
     return response.data;
   },
@@ -28,17 +28,17 @@ export const commentService = {
     return response.data;
   },
 
-  upvoteComment: async (id: number): Promise<Comment> => {
+  upvoteComment: async (id: number): Promise<CommentInfo> => {
     const response = await api.post(`/comments/${id}/upvote`);
     return response.data;
   },
 
-  downvoteComment: async (id: number): Promise<Comment> => {
+  downvoteComment: async (id: number): Promise<CommentInfo> => {
     const response = await api.post(`/comments/${id}/downvote`);
     return response.data;
   },
 
-  replyToComment: async (commentId: number, content: string): Promise<Comment> => {
+  replyToComment: async (commentId: number, content: string): Promise<CommentInfo> => {
     const response = await api.post(`/comments/${commentId}/reply`, { content });
     return response.data;
   },

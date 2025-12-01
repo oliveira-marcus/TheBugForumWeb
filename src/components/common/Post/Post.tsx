@@ -2,7 +2,8 @@ import { Award } from "lucide-react";
 import PostMeta from "./PostMeta";
 import PostActions from "./PostActionst";
 import { formatTimeStamp } from "../../../utils/datetime";
-import type { PostInfo } from '../../../types/post.types';
+import type { PostInfo } from "../../../types/post.types";
+import { Link } from "react-router";
 
 interface PostProps {
   post: PostInfo;
@@ -34,13 +35,18 @@ export default function Post({ post }: PostProps) {
             timestamp={formatTimeStamp(new Date(post.createdAt))}
           />
 
-          <h2 className="text-xl font-bold mb-2 hover:text-blue-400 cursor-pointer">
-            {post.title}
-          </h2>
+          <Link to={post.id.toString()} >
+            <h2 className="text-xl font-bold mb-2 hover:text-blue-400 cursor-pointer">
+              {post.title}
+            </h2>
+          </Link>
 
           <p className="text-gray-400 mb-4 line-clamp-2">{post.content}</p>
 
-          <PostActions commentsCount={post._count.comments} votes={post.upvotes - post.downvotes} />
+          <PostActions
+            commentsCount={post._count.comments}
+            votes={post.upvotes - post.downvotes}
+          />
         </div>
       </div>
     </article>
