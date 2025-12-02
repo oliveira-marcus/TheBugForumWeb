@@ -14,8 +14,6 @@ export default function Polls() {
     postService.getAllPosts(1, 20, "Polls").then((responseData) => setFeedInfo(responseData));
   }, []);
 
-  const enquetes: never[] = [];
-
   return (
     <main className="lg:col-span-9 space-y-4">
       <div className="flex items-center justify-between">
@@ -43,7 +41,7 @@ export default function Polls() {
         ))}
       </div>
 
-      {enquetes.length === 0 ? (
+      {feedInfo?.posts.length === 0 ? (
         <div className="bg-gray-900 rounded-lg border border-gray-800 p-12 text-center">
           <p className="text-gray-400 text-lg mb-6">Nenhuma enquete encontrada.</p>
           <Link
