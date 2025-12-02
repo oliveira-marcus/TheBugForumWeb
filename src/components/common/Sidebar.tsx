@@ -1,5 +1,5 @@
 import { Award, Calendar, DollarSign, Home, Plus, Vote } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 export default function Sidebar() {
   const categories = [
@@ -10,7 +10,7 @@ export default function Sidebar() {
     { id: "esportes", name: "Esportes", icon: Award, route: "esportes" },
   ];
 
-  const selectedCategory = "todos";
+  const location = useLocation();
 
   return (
     <aside className="lg:col-span-3 space-y-4">
@@ -30,20 +30,24 @@ export default function Sidebar() {
           <h2 className="font-semibold text-lg">Categorias</h2>
         </div>
         <nav className="p-2">
-          {categories.map((cat) => (
-            <Link
-              key={cat.id}
-              to={cat.route}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${
-                selectedCategory === cat.id
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-300 hover:bg-gray-800"
-              }`}
-            >
-              <cat.icon className="w-5 h-5" />
-              <span className="font-medium">{cat.name}</span>
-            </Link>
-          ))}
+          {categories.map((cat) => {
+            const linkPath = cat.route.startsWith("/") ? cat.route : `/${cat.route}`;
+            const isActive =
+              linkPath === "/" ? location.pathname === "/" : location.pathname === linkPath || location.pathname.startsWith(linkPath + "/");
+
+            return (
+              <Link
+                key={cat.id}
+                to={cat.route}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition ${
+                  isActive ? "bg-blue-600 text-white" : "text-gray-300 hover:bg-gray-800"
+                }`}
+              >
+                <cat.icon className="w-5 h-5" />
+                <span className="font-medium">{cat.name}</span>
+              </Link>
+            );
+          })}
         </nav>
       </div>
 
