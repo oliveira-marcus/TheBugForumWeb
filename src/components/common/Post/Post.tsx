@@ -35,7 +35,7 @@ export default function Post({ post }: PostProps) {
             timestamp={formatTimeStamp(new Date(post.createdAt))}
           />
 
-          <Link to={post.id.toString()} >
+          <Link to={"/posts" + "/" + post.id.toString()} >
             <h2 className="text-xl font-bold mb-2 hover:text-blue-400 cursor-pointer">
               {post.title}
             </h2>

@@ -64,7 +64,7 @@ export default function AllRoutes() {
         <Route path="financas" element={<Finances />} />
         <Route path="esportes" element={<Sports />} />
         <Route path="eventos" element={<Events />} />
-        <Route path=":postId" element={<PostPage />} />
+        <Route path="posts/:postId" element={<PostPage />} />
       </Route>
     </Routes>
   );
