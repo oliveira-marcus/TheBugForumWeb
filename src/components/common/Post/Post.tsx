@@ -32,6 +32,7 @@ export default function Post({ post }: PostProps) {
           <PostMeta
             category={translateCategory(post.category)}
             author={post.user.username}
+            authorId={post.user.id}
             timestamp={formatTimeStamp(new Date(post.createdAt))}
           />
 

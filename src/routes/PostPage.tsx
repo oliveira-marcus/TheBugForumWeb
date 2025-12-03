@@ -68,6 +68,7 @@ export default function PostPage() {
     <main className="lg:col-span-9 space-y-4">
       <PostMeta
         author={post.user.username}
+        authorId={post.user.id}
         category={post.category}
         timestamp={formatTimeStamp(new Date(post.createdAt))}
       />

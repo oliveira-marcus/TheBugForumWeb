@@ -3,10 +3,12 @@ import { Link } from "react-router";
 export default function PostMeta({
   category,
   author,
+  authorId,
   timestamp,
 }: {
   category: string;
   author: string;
+  authorId: number;
   timestamp: string;
 }) {
 
@@ -27,7 +29,7 @@ export default function PostMeta({
       </Link>
       <span>•</span>
       <span>
-        Postado por <span className="text-blue-400">u/{author}</span>
+        Postado por <Link to={`/users/${authorId}`}><span className="text-blue-400 hover:underline">u/{author}</span></Link>
       </span>
       <span>•</span>
       <span>{timestamp}</span>
