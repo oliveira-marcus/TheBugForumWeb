@@ -20,7 +20,7 @@ O Fórum The Bug é uma plataforma digital colaborativa desenvolvida para a Atl�
 
 ```
 src/
-├── components/           # Componentes reutilizáveis
+├── components/          # Componentes reutilizáveis
 │   └── common/          # Componentes compartilhados
 │       ├── Comment/     # Componentes de comentários
 │       ├── Enquete/     # Componentes de enquetes/polls
@@ -68,13 +68,13 @@ src/
 
 - Node.js 18+ 
 - npm ou yarn
-- API Backend rodando (veja [repositório da API](https://github.com/caioliboreiro/TheBugForumAPI.git)
+- API Backend rodando (veja [repositório da API](https://github.com/caioliboreiro/TheBugForumAPI.git))
 
 ## 💻 Instalação e Execução
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/forum-thebug-frontend.git
+git clone https://github.com/oliveira-marcus/TheBugForumWeb.git
 cd forum-thebug-frontend
 ```
 
